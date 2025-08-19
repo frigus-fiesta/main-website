@@ -231,6 +231,7 @@ export default function PaymentPage() {
     setIsProcessing(true);
     const mobile = formData.phone;
     const amount = parseFloat(eventFee);
+    const baseUrl = typeof window !== "undefined" ? window.location.origin : "";
 
     // Prepare the data
     const data = {
@@ -238,11 +239,12 @@ export default function PaymentPage() {
       amount: amount,
       mobile,
       transactionId: "T" + Date.now(),
+      baseUrl,
     };
 
     try {
       // Initiate payment
-      const response = await axios.post("http://localhost:3000/api/phonepe-initiate", data);
+      const response = await axios.post(`${baseUrl}/api/phonepe-initiate`, data);
 
       // Redirect user to PhonePe payment page
       if (
