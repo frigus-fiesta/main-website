@@ -314,34 +314,34 @@ const MailModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-      <div className="max-h-[95vh] w-full max-w-lg overflow-y-auto rounded-2xl bg-white shadow-2xl border border-yellow-200">
+      <div className="max-h-[95vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-yellow-200 bg-white shadow-2xl">
         <div className="p-8">
           <div className="mb-6 flex items-center justify-between">
-            <h3 className="text-2xl font-bold text-yellow-700 flex items-center gap-2">
+            <h3 className="flex items-center gap-2 text-2xl font-bold text-yellow-700">
               <Mail className="size-6 text-black" /> Send Mail
             </h3>
-            <button onClick={onClose} className="text-gray-400 hover:text-yellow-600 transition-colors">
+            <button onClick={onClose} className="text-gray-400 transition-colors hover:text-yellow-600">
               <X className="size-7" />
             </button>
           </div>
           <form ref={formRef} onSubmit={handleSend} className="space-y-6">
             <div>
               <label className="mb-1 block text-sm font-semibold text-gray-700">Name *</label>
-              <input type="text" value={name} onChange={e => setName(e.target.value)} className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none transition-all" required />
+              <input type="text" value={name} onChange={e => setName(e.target.value)} className="w-full rounded-lg border border-gray-300 px-4 py-2 transition-all focus:outline-none" required />
             </div>
             <div>
               <label className="mb-1 block text-sm font-semibold text-gray-700">Subject *</label>
-              <input type="text" value={subject} onChange={e => setSubject(e.target.value)} className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none transition-all" required />
+              <input type="text" value={subject} onChange={e => setSubject(e.target.value)} className="w-full rounded-lg border border-gray-300 px-4 py-2 transition-all focus:outline-none" required />
             </div>
             <div>
               <label className="mb-1 block text-sm font-semibold text-gray-700">Email *</label>
-              <input type="email" value={email} onChange={e => setEmail(e.target.value)} className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none transition-all" required />
+              <input type="email" value={email} onChange={e => setEmail(e.target.value)} className="w-full rounded-lg border border-gray-300 px-4 py-2 transition-all focus:outline-none" required />
             </div>
             <div>
               <label className="mb-1 block text-sm font-semibold text-gray-700">Message *</label>
-              <textarea value={message} onChange={e => setMessage(e.target.value)} className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none transition-all min-h-[100px]" required />
+              <textarea value={message} onChange={e => setMessage(e.target.value)} className="min-h-[100px] w-full rounded-lg border border-gray-300 px-4 py-2 transition-all focus:outline-none" required />
             </div>
-            <button type="submit" className="w-full rounded-lg bg-yellow-500 px-4 py-2 text-white font-bold shadow hover:bg-yellow-600 focus:outline-none transition-all">
+            <button type="submit" className="w-full rounded-lg bg-yellow-500 px-4 py-2 font-bold text-white shadow transition-all hover:bg-yellow-600 focus:outline-none">
               Send Mail
             </button>
           </form>
@@ -568,8 +568,8 @@ const DashboardPage = () => {
       <div className="mx-auto max-w-7xl px-4 py-8 pt-24 sm:px-6 lg:px-8">
         <div className="mb-8 flex items-center justify-between">
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">Admin Dashboard</h1>
-            <p className="mt-2 text-gray-600 text-sm md:text-md">Manage your website data and content</p>
+            <h1 className="text-2xl font-bold text-gray-900 md:text-3xl">Admin Dashboard</h1>
+            <p className="md:text-md mt-2 text-sm text-gray-600">Manage your website data and content</p>
           </div>
           <button
             onClick={() => setIsMailModalOpen(true)}

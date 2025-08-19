@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
 "use client"
 
 import React, { useState, useEffect } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import Script from 'next/script';
+import axios from 'axios';
 
 // import Header from '@/components/Header';
 // import Footer from '@/components/Footer';
@@ -224,13 +226,47 @@ export default function PaymentPage() {
     }
   };
 
+  const handlePhonePePayment = async (e:any) => {
+    e.preventDefault();
+    setIsProcessing(true);
+    const mobile = formData.phone;
+    const amount = parseFloat(eventFee);
+
+    // Prepare the data
+    const data = {
+      name: formData.name,
+      amount: amount,
+      mobile,
+      transactionId: "T" + Date.now(),
+    };
+
+    try {
+      // Initiate payment
+      const response = await axios.post("http://localhost:3000/api/phonepe-initiate", data);
+
+      // Redirect user to PhonePe payment page
+      if (
+        response.data &&
+        response.data.data.instrumentResponse.redirectInfo.url
+      ) {
+        window.location.href =
+          response.data.data.instrumentResponse.redirectInfo.url;
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Error initiating payment. Please try again.");
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
   // PhonePe payment handler
-  const handlePhonePePayment = async () => {
+  const old_handlePhonePePayment = async () => {
     setPhonePeLoading(true);
     try {
       const orderId = `ORDER_${Date.now()}`;
       const callbackUrl = `${window.location.origin}/payment-callback`;
-      const response = await fetch('/api/phonepe/initiate', {
+      const response = await fetch('/api/phonepe-initiate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
