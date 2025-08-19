@@ -85,9 +85,9 @@ export async function POST(req) {
       merchantTransactionId: merchantTransactionId,
       name: reqData.name,
       amount: reqData.amount * 100, // Convert to paise (smallest currency unit)
-      redirectUrl: `${reqData.baseUrl}/api/status?id=${merchantTransactionId}`,
+      redirectUrl: `${reqData.baseUrl}/api/phonepe-status?id=${merchantTransactionId}`,
       redirectMode: "POST",
-      callbackUrl: `${reqData.baseUrl}/api/status?id=${merchantTransactionId}`,
+      callbackUrl: `${reqData.baseUrl}/api/phonepe-status?id=${merchantTransactionId}`,
       mobileNumber: reqData.mobile,
       paymentInstrument: {
         type: "PAY_PAGE",

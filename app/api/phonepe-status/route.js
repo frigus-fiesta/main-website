@@ -1,75 +1,45 @@
-// temp. code to replaced with the status route
 import crypto from "crypto";
 
 import axios from "axios";
-import { NextResponse } from "next/server";
+import {NextResponse} from "next/server";
 
-// Constants
 let salt_key = "96434309-7796-489d-8924-ab56988a6076";
 let merchant_id = "PGTESTPAYUAT86";
 
-export async function POST(req) {
-  try {
-    let reqData = await req.json(); // Parse the request data
+export async function POST(req){
+    try {
+        const searchParams = req.nextUrl.searchParams;
+        const merchantTransactionId = searchParams.get('id');
+        const keyIndex = 1;
 
-    // Extract transaction details
-    let merchantTransactionId = reqData.transactionId;
+        const string = `/pg/v1/status/${merchant_id}/${merchantTransactionId}` + salt_key;
+        const sha256 = crypto.createHash('sha256').update(string).digest('hex');
+        const checksum = sha256 + "###" + keyIndex;
 
-    // Prepare the payload
-    const data = {
-      merchantId: merchant_id,
-      merchantTransactionId: merchantTransactionId,
-      name: reqData.name,
-      amount: reqData.amount * 100, // Convert to paise (smallest currency unit)
-      redirectUrl: `${reqData.baseUrl}/api/status?id=${merchantTransactionId}`,
-      redirectMode: "POST",
-      callbackUrl: `${reqData.baseUrl}/api/status?id=${merchantTransactionId}`,
-      mobileNumber: reqData.mobile,
-      paymentInstrument: {
-        type: "PAY_PAGE",
-      },
-    };
+        const options = {
+            method: "GET",
+            url: `https://api-prepod.phonepe.com/apis/pg-sandbox/pg/v1/pay/${merchant_id}/${merchantTransactionId}`,
+            headers: {
+                accept: "application/json",
+                "Content-Type": "application/json",
+                "X-VERIFY": checksum,
+            },
+        }
+        const response = await axios(options);
 
-    // Encode payload as Base64
-    const payload = JSON.stringify(data);
-    const payloadMain = Buffer.from(payload).toString("base64");
+        if (response.data.success === true){
+            return NextResponse.redirect('/success',{
+                status:301
+            })
+        }
+        else {
+            return NextResponse.redirect('/failed',{
+                status:301
+            })
+        }
+    } catch (error) {
+     console.log(error)
 
-    // Generate checksum
-    const keyIndex = 1;
-    const string = payloadMain + "/pg/v1/pay" + salt_key;
-    const sha256 = crypto.createHash("sha256").update(string).digest("hex");
-    const checksum = `${sha256}###${keyIndex}`;
-
-    // Define PhonePe API URL
-    const prod_URL =
-      "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
-
-    // API call options
-    const options = {
-      method: "POST",
-      url: prod_URL,
-      headers: {
-        accept: "application/json",
-        "Content-Type": "application/json",
-        "X-VERIFY": checksum,
-      },
-      data: {
-        request: payloadMain,
-      },
-    };
-
-    // Make the API call
-    const response = await axios(options);
-
-    // Return the response from PhonePe
-    return NextResponse.json(response.data);
-  } catch (error) {
-    console.error(error);
-
-    // Handle errors
-    return NextResponse.json(
-      { error: "Payment initiation failed", details: error.message },
-      { status: 500 }
-    );
-  }
+    return NextResponse.json({error: "Payment check failed", details:error.message}, {status: 500});   
+    }
 }
