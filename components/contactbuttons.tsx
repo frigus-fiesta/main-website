@@ -2,11 +2,12 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ContactButtons() {
   return (
     <div className="contact-stack" role="group" aria-label="Contact actions">
-      <a
+      <Link
         href="https://wa.me/919000701000"
         target="_blank"
         rel="noopener noreferrer"
@@ -17,13 +18,13 @@ export default function ContactButtons() {
         <Image
           src="/assets/whatsapp.png"
           alt="WhatsApp"
-          width={32}
-          height={32}
+          width={34}
+          height={34}
           className="contact-icon"
           sizes="32px"
           priority
         />
-      </a>
+      </Link>
     </div>
   );
 }
