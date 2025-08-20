@@ -40,16 +40,16 @@ const Footer = () => {
               <p className="mb-1 text-base font-bold text-gray-800">
                 Our Location
               </p>
-              <a
+              <Link
                 href="https://maps.google.com/?q=Jawahar+Nagar,+Sainikpuri,+Hyderabad,+Telangana,+India-+500094"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="cursor-pointer text-sm text-gray-600 hover:text-black hover:underline"
               >
-                Jawahar Nagar, Sainikpuri,
+                37-74/15/3A C 158, JJ NAGAR NEREDMET SAINIKPURI DEFENCE COLONY 
                 <br />
-                Hyderabad, Telangana, India- 500094
-              </a>
+                MALKAJGIRI 500094
+              </Link>
             </div>
             <div>
               <div className="mb-3 inline-flex items-center justify-center rounded-full bg-white/50 p-3 ring-1 ring-black/5 backdrop-blur-sm">
@@ -58,12 +58,12 @@ const Footer = () => {
               <p className="mb-1 text-base font-bold text-gray-800">
                 Contact Phone
               </p>
-              <a
+              <Link
                 href="tel:+919182684160"
                 className="cursor-pointer text-sm text-gray-600 hover:text-black hover:underline"
               >
                 91-91826-84160
-              </a>
+              </Link>
             </div>
             <div>
               <div className="mb-3 inline-flex items-center justify-center rounded-full bg-white/50 p-3 ring-1 ring-black/5 backdrop-blur-sm">
@@ -72,12 +72,12 @@ const Footer = () => {
               <p className="mb-1 text-base font-bold text-gray-800">
                 Email Address
               </p>
-              <a
+              <Link
                 href="mailto:info@frigusfiesta.com"
                 className="cursor-pointer text-sm text-gray-600 hover:text-black hover:underline"
               >
                 info@frigusfiesta.com
-              </a>
+              </Link>
             </div>
           </div>
         </div>

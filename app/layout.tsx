@@ -1,8 +1,10 @@
 import { Poppins } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
+import ContactButtons from "../components/contactbuttons";
+
 import "./globals.css";
-import Head from "next/head";
-import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -81,62 +83,51 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
-        <meta property="og:title" content={metadata.og.title} />
-        <meta property="og:description" content={metadata.og.description} />
-        <meta property="og:url" content={metadata.og.url} />
-        <meta property="og:type" content={metadata.og.type} />
-        <meta property="og:image" content={metadata.og.image} />
-        <meta name="twitter:card" content={metadata.twitter.card} />
-        <meta name="twitter:site" content={metadata.twitter.site} />
-        <meta name="twitter:title" content={metadata.twitter.title} />
-        <meta
-          name="twitter:description"
-          content={metadata.twitter.description}
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(metadata.structuredData),
+          }}
         />
-        <meta name="twitter:image" content={metadata.twitter.image} />
-        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-      </Head>
+      </head>
       <body className={poppins.className}>
-        <div>
-          <main className="relative z-10 overflow-hidden">
-            {children}
-            <Analytics />
-            <SpeedInsights />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  (function(){
-                    if(!window.chatbase||window.chatbase("getState")!=="initialized"){
-                      window.chatbase=(...args)=>{
-                        if(!window.chatbase.q){window.chatbase.q=[]}
-                        window.chatbase.q.push(args)
-                      };
-                      window.chatbase=new Proxy(window.chatbase,{
-                        get(target,prop){
-                          if(prop==="q"){return target.q}
-                          return (...args)=>target(prop,...args)
-                        }
-                      })
+        <main className="relative z-10 overflow-hidden">{children}</main>
+        <ContactButtons />
+        <Analytics />
+        <SpeedInsights />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(){
+                if(!window.chatbase||window.chatbase("getState")!=="initialized"){
+                  window.chatbase=(...args)=>{
+                    if(!window.chatbase.q){window.chatbase.q=[]}
+                    window.chatbase.q.push(args)
+                  };
+                  window.chatbase=new Proxy(window.chatbase,{
+                    get(target,prop){
+                      if(prop==="q"){return target.q}
+                      return (...args)=>target(prop,...args)
                     }
-                    const onLoad=function(){
-                      const script=document.createElement("script");
-                      script.src="https://www.chatbase.co/embed.min.js";
-                      script.id="KK51L-QXHrFz0BfSB6aMJ";
-                      script.domain="www.chatbase.co";
-                      document.body.appendChild(script)
-                    };
-                    if(document.readyState==="complete"){
-                      onLoad()
-                    }else{
-                      window.addEventListener("load",onLoad)
-                    }
-                  })();
-                `,
-              }}
-            />
-          </main>
-        </div>
+                  })
+                }
+                const onLoad=function(){
+                  const script=document.createElement("script");
+                  script.src="https://www.chatbase.co/embed.min.js";
+                  script.id="KK51L-QXHrFz0BfSB6aMJ";
+                  script.domain="www.chatbase.co";
+                  document.body.appendChild(script)
+                };
+                if(document.readyState==="complete"){
+                  onLoad()
+                }else{
+                  window.addEventListener("load",onLoad)
+                }
+              })();
+            `,
+          }}
+        />
       </body>
     </html>
   );
