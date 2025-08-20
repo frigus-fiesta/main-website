@@ -40,7 +40,7 @@ const Sparkles = () => (
           }}
         >
           <motion.span
-            className="absolute rounded-full bg-yellow-200 opacity-60 blur-sm w-full h-full"
+            className="absolute size-full rounded-full bg-yellow-200 opacity-60 blur-sm"
             animate={{
               y: [0, -10 - Math.random() * 20, 0],
               opacity: [0.6, 1, 0.6],
@@ -69,7 +69,7 @@ const floatingCircles = [
 
 export default function NotFound() {
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center bg-white overflow-hidden">
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-white">
       <GoldAnimatedBackground />
       <Sparkles />
       {floatingCircles.map((circle, i) => (
@@ -96,12 +96,12 @@ export default function NotFound() {
               repeat: Infinity,
               repeatType: "mirror",
             }}
-            className="w-full h-full"
+            className="size-full"
           />
         </div>
       ))}
       <motion.main
-        className="animate-border-glow relative z-10 flex w-full max-w-lg flex-col items-center rounded-3xl border border-yellow-100 bg-white/80 p-10 shadow-2xl backdrop-blur-lg text-center"
+        className="animate-border-glow relative z-10 flex w-full max-w-lg flex-col items-center rounded-3xl border border-yellow-100 bg-white/80 p-10 text-center shadow-2xl backdrop-blur-lg"
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, type: "spring", stiffness: 80 }}
@@ -114,7 +114,7 @@ export default function NotFound() {
           className="mb-6"
         />
         <motion.h1
-          className="text-6xl font-extrabold mb-2 text-yellow-500 drop-shadow-lg"
+          className="mb-2 text-6xl font-extrabold text-yellow-500 drop-shadow-lg"
           initial={{ opacity: 0, y: 16, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.4, type: "spring", stiffness: 120 }}
@@ -122,7 +122,7 @@ export default function NotFound() {
           404
         </motion.h1>
         <motion.h2
-          className="text-2xl font-semibold mb-2 text-gray-700"
+          className="mb-2 text-2xl font-semibold text-gray-700"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35, type: "spring", stiffness: 100 }}
@@ -130,13 +130,13 @@ export default function NotFound() {
           Page Not Found
         </motion.h2>
         <motion.p
-          className="mb-6 text-gray-500 max-w-md"
+          className="mb-6 max-w-md text-gray-500"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35, type: "spring", stiffness: 100, delay: 0.1 }}
         >
           Oops! The page you are looking for doesn&apos;t exist or has been moved.<br />
-          <span className="text-yellow-600 font-semibold">Let&apos;s get you back to the celebration!</span>
+          <span className="font-semibold text-yellow-600">Let&apos;s get you back to the celebration!</span>
         </motion.p>
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
@@ -145,7 +145,7 @@ export default function NotFound() {
         >
           <Link
             href="/"
-            className="inline-block px-6 py-3 bg-yellow-500 text-white rounded-lg shadow transition-colors font-medium"
+            className="inline-block rounded-lg bg-yellow-500 px-6 py-3 font-medium text-white shadow transition-colors"
           >
             Go to Homepage
           </Link>
