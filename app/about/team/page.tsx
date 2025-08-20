@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-import Footer from "@/components/Footer";
+import Footer from "@/components/Footer-dark-theme";
 import Header from "@/components/Header";
 
 const GoldAnimatedBackground = () => (

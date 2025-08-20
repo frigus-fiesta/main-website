@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Users, Star, Music, Sparkles, Mic2, Calendar } from 'lucide-react';
 
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import Footer from "@/components/Footer-dark-theme";
 
 const images = [
   '/assets/11.JPG', '/assets/12.JPG', '/assets/13.JPG', '/assets/14.JPG', '/assets/15.JPG', '/assets/16.JPG', '/assets/17.JPG', '/assets/18.JPG', '/assets/19.JPG', '/assets/20.JPG',

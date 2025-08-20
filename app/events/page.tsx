@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import Footer from "@/components/Footer-dark-theme";
 
 const GoldAnimatedBackground = () => (
   <div className="pointer-events-none absolute left-0 top-0 -z-10 size-full">

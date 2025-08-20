@@ -4,8 +4,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaFeatherAlt } from "react-icons/fa";
 
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer-dark-theme";
 
 // GoldAnimatedBackground and floatingCircles copied from HomeServices/HomeAbout/Testimonials
 const floatingCircles = [

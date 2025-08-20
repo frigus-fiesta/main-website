@@ -4,8 +4,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+import Header from '@/components/Header';
+import Footer from "@/components/Footer-dark-theme";
 
 interface ImageItem {
   id: number;

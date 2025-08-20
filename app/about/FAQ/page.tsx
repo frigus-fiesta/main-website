@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import Footer from "@/components/Footer-dark-theme";
 
 const GoldAnimatedBackground = () => (
   <div className="pointer-events-none absolute left-0 top-0 -z-10 size-full">

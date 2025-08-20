@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Footer from "@/components/Footer-dark-theme";
 import Testimonials from "@/components/Testimonials";
 import HomeClients from "@/components/Home/HomeClients";
 

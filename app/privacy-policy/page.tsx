@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { FaFeatherAlt } from "react-icons/fa";
 
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Footer from "@/components/Footer-dark-theme";
 
 const floatingCircles = [
   { size: "120px", top: "10%", left: "5%", delay: 0 },

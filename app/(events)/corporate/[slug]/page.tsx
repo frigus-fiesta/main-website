@@ -4,7 +4,7 @@ import { Calendar, MapPin, Users, Phone, Mail, Globe, ArrowLeft } from 'lucide-r
 import { useRouter } from 'next/navigation';
 
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import Footer from "@/components/Footer-dark-theme";
 import Reviews from '@/components/Reviews';
 import ImageGallery from '@/components/event/image-gallery';
 
