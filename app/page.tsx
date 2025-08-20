@@ -1,4 +1,4 @@
-import Footer from "@/components/Footer-dark-theme";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import HomeAbout from "@/components/Home/HomeAbout";
 import HomeClients from "@/components/Home/HomeClients";

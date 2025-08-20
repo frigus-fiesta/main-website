@@ -495,7 +495,7 @@ export default function BookAppointmentPage() {
               <p className="mb-3 text-gray-600">
                 Located in the heart of Hyderabad, easily accessible with ample parking and premium facilities.
               </p>
-              <p className="text-sm text-gray-500">Jawahar Nagar, Sainikpuri, Hyderabad</p>
+              <p className="text-sm text-gray-500">37-74/15/3A C 158, JJ NAGAR NEREDMET SAINIKPURI DEFENCE COLONY, MALKAJGIRI 500094</p>
             </div>
           </div>
         </div>
