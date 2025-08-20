@@ -5,7 +5,6 @@ import {
   MapPin,
   Phone,
   Mail,
-  Facebook,
   Instagram,
   Youtube,
   Linkedin,
