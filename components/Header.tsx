@@ -30,7 +30,7 @@ const navLinks = [
     dropdown: [
       { href: '/about/story', label: 'About us' },
       { href: '/about/FAQ', label: 'FAQ`s' },
-      { href: '/about/team', label: 'Our Team' },
+      // { href: '/about/team', label: 'Our Team' },
       { href: '/about/careers', label: 'Career with us' },
     ]
   },
