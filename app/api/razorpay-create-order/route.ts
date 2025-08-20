@@ -6,8 +6,6 @@ const razorpay = new Razorpay({
     key_secret: process.env.RAZORPAY_LIVE_KEY_SECRET
 })
 
-export const runtime = 'edge';
-
 export async function POST(req:Request) {
     const {amount} = await req.json();
     const order = await razorpay.orders.create({

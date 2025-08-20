@@ -72,8 +72,6 @@ import { NextResponse } from "next/server";
 let salt_key = "96434309-7796-489d-8924-ab56988a6076";
 let merchant_id = "PGTESTPAYUAT86";
 
-export const runtime = 'edge';
-
 export async function POST(req) {
   try {
     let reqData = await req.json(); // Parse the request data
