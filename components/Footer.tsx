@@ -83,7 +83,6 @@ const Footer = () => {
         </div>
         <div className="mb-6 flex justify-center space-x-4">
           {[
-            { Icon: Facebook, href: "/", label: "Facebook" },
             {
               Icon: Instagram,
               href: "https://www.instagram.com/frigusfiesta?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
