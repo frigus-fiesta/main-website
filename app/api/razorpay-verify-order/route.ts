@@ -16,6 +16,8 @@ const generatedSignature = (
   return sig;
 };
 
+export const runtime = 'edge';
+
 export async function POST(request: NextRequest) {
   const { orderId, razorpayPaymentId, razorpaySignature } =
     await request.json();
