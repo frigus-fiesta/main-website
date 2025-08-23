@@ -8,7 +8,7 @@ export default function ContactButtons() {
   return (
     <div className="contact-stack" role="group" aria-label="Contact actions">
       <Link
-        href="https://wa.me/919000701000"
+        href="https://wa.me/9182684160"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
