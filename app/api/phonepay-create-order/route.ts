@@ -3,6 +3,7 @@ import crypto from "crypto";
 import { NextResponse } from "next/server";
 import axios from "axios";
 
+export const runtime = "nodejs";
 export async function POST(req: Request) {
   const { amount, userId, callbackUrl } = await req.json();
 
