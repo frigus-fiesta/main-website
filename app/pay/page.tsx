@@ -226,41 +226,41 @@ export default function PaymentPage() {
     }
   };
 
-  const handlePhonePePayment = async (e:any) => {
-    e.preventDefault();
-    setIsProcessing(true);
-    const mobile = formData.phone;
-    const amount = parseFloat(eventFee);
-    const baseUrl = typeof window !== "undefined" ? window.location.origin : "";
+  // const handlePhonePePayment = async (e:any) => {
+  //   e.preventDefault();
+  //   setIsProcessing(true);
+  //   const mobile = formData.phone;
+  //   const amount = parseFloat(eventFee);
+  //   const baseUrl = typeof window !== "undefined" ? window.location.origin : "";
 
-    // Prepare the data
-    const data = {
-      name: formData.name,
-      amount: amount,
-      mobile,
-      transactionId: "T" + Date.now(),
-      baseUrl,
-    };
+  //   // Prepare the data
+  //   const data = {
+  //     name: formData.name,
+  //     amount: amount,
+  //     mobile,
+  //     transactionId: "T" + Date.now(),
+  //     baseUrl,
+  //   };
 
-    try {
-      // Initiate payment
-      const response = await axios.post(`${baseUrl}/api/phonepe-initiate`, data);
+  //   try {
+  //     // Initiate payment
+  //     const response = await axios.post(`${baseUrl}/api/phonepay-create-order`, data);
 
-      // Redirect user to PhonePe payment page
-      if (
-        response.data &&
-        response.data.data.instrumentResponse.redirectInfo.url
-      ) {
-        window.location.href =
-          response.data.data.instrumentResponse.redirectInfo.url;
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Error initiating payment. Please try again.");
-    } finally {
-      setIsProcessing(false);
-    }
-  };
+  //     // Redirect user to PhonePe payment page
+  //     if (
+  //       response.data &&
+  //       response.data.data.instrumentResponse.redirectInfo.url
+  //     ) {
+  //       window.location.href =
+  //         response.data.data.instrumentResponse.redirectInfo.url;
+  //     }
+  //   } catch (err) {
+  //     console.error(err);
+  //     alert("Error initiating payment. Please try again.");
+  //   } finally {
+  //     setIsProcessing(false);
+  //   }
+  // };
 
   // PhonePe payment handler
   const old_handlePhonePePayment = async () => {
@@ -291,6 +291,43 @@ export default function PaymentPage() {
       console.error('PhonePe payment error:', error);
       alert('PhonePe payment failed. Please try again.');
       setPhonePeLoading(false);
+    }
+  };
+
+  const handlePhonePePayment = async (e: any) => {
+    e.preventDefault();
+    setIsProcessing(true);
+
+    const mobile = formData.phone;
+    const amount = parseFloat(eventFee);
+    const baseUrl = typeof window !== "undefined" ? window.location.origin : "";
+
+    // Prepare the data to send to API route
+    const data = {
+      userId: mobile, // or some unique userId (you can replace with formData.email etc.)
+      amount,
+      callbackUrl: `${baseUrl}/api/payment/status`, // matches your API route
+    };
+
+    try {
+      // Call the Next.js API route (not /api/phonepay-create-order anymore)
+      const response = await axios.post(`/api/payment/initiate`, data);
+
+      // Redirect user to PhonePe payment page
+      const redirectUrl =
+        response.data?.data?.instrumentResponse?.redirectInfo?.url;
+
+      if (redirectUrl) {
+        window.location.href = redirectUrl;
+      } else {
+        console.error("PhonePe response invalid:", response.data);
+        alert("Payment initiation failed. Please try again.");
+      }
+    } catch (err) {
+      console.error("Error initiating payment:", err);
+      alert("Error initiating payment. Please try again.");
+    } finally {
+      setIsProcessing(false);
     }
   };
 
