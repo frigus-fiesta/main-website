@@ -311,7 +311,7 @@ export default function PaymentPage() {
 
     try {
       // Call the Next.js API route (not /api/phonepay-create-order anymore)
-      const response = await axios.post(`/api/payment/initiate`, data);
+      const response = await axios.post(`/api/phonepay-create-order`, data);
 
       // Redirect user to PhonePe payment page
       const redirectUrl =
