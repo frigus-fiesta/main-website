@@ -36,7 +36,7 @@ export async function POST(req: Request) {
     );
 
     const statusData = response.data;
-
+    let email = "info.frigusfiesta@gmail.com";
     // ---- Trigger Mail ----
     if (statusData?.code === "PAYMENT_SUCCESS") {
       const mailPayload = {
@@ -48,7 +48,7 @@ export async function POST(req: Request) {
           <p>Transaction ID: <strong>${transactionId}</strong></p>
           <p>Thank you for joining <strong>Frigus Fiesta</strong>. Stay tuned for exciting events!</p>
         `,
-        recipients: ["info.frigusfiesta@gmail.com"], // replace with user email if you capture it
+        recipients: [email], // replace with user email if you capture it
       };
 
       await axios.post(
