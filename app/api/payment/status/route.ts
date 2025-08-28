@@ -7,17 +7,30 @@ export const runtime = "nodejs";
 
 export async function POST(req: Request) {
   try {
-    // PhonePe sends callback as form-urlencoded, not JSON
     const form = await req.formData();
 
     const transactionId =
       form.get("transactionId")?.toString() ||
       form.get("merchantTransactionId")?.toString();
 
-    const merchantId = process.env.PHONEPE_MERCHANT_ID!;
+    const state = form.get("state")?.toString(); 
+    let email = "info.frigusfiesta@gmail.com";
 
+    if (state) {
+      try {
+        const parsed = JSON.parse(state);
+        if (parsed.email) email = parsed.email;
+      } catch (err) {
+        console.error("State parse error:", err);
+      }
+    }
+
+    const merchantId = process.env.PHONEPE_MERCHANT_ID!;
     if (!transactionId) {
-      return NextResponse.json({ error: "Transaction ID missing" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Transaction ID missing" },
+        { status: 400 }
+      );
     }
 
     // ---- Verify payment status with PhonePe ----
@@ -36,7 +49,7 @@ export async function POST(req: Request) {
     );
 
     const statusData = response.data;
-    let email = "info.frigusfiesta@gmail.com";
+
     // ---- Trigger Mail ----
     if (statusData?.code === "PAYMENT_SUCCESS") {
       const mailPayload = {
@@ -48,7 +61,7 @@ export async function POST(req: Request) {
           <p>Transaction ID: <strong>${transactionId}</strong></p>
           <p>Thank you for joining <strong>Frigus Fiesta</strong>. Stay tuned for exciting events!</p>
         `,
-        recipients: [email], // replace with user email if you capture it
+        recipients: [email], // ✅ now uses user’s real email
       };
 
       await axios.post(
@@ -60,7 +73,10 @@ export async function POST(req: Request) {
 
     return NextResponse.json(statusData);
   } catch (error: any) {
-    console.error("Payment Status Error:", error?.response?.data || error.message);
+    console.error(
+      "Payment Status Error:",
+      error?.response?.data || error.message
+    );
 
     return NextResponse.json(
       { error: "Status check failed", details: error?.response?.data },
