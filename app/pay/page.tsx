@@ -300,11 +300,13 @@ export default function PaymentPage() {
 
     const mobile = formData.phone;
     const amount = parseFloat(eventFee);
+    const email = formData.email;
     const baseUrl = typeof window !== "undefined" ? window.location.origin : "";
 
     // Prepare the data to send to API route
     const data = {
       userId: mobile, // or some unique userId (you can replace with formData.email etc.)
+      email,
       amount,
       callbackUrl: `${baseUrl}/api/payment/status`, // matches your API route
     };
