@@ -28,7 +28,8 @@ export async function POST(req: Request) {
     const xVerify = generateXVerify(base64Payload, endpoint);
 
     const response = await axios.post(
-      `https://api-preprod.phonepe.com/apis/pg-sandbox${endpoint}`,
+      // `https://api-preprod.phonepe.com/apis/pg-sandbox${endpoint}`,
+      `https://api.phonepe.com/apis/hermes${endpoint}`,
       { request: base64Payload },
       {
         headers: {
