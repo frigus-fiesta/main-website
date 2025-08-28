@@ -5,13 +5,15 @@ import axios from "axios";
 
 export const runtime = "nodejs";
 
-// POST is used because PhonePe sends callback in POST mode
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
+    // PhonePe sends callback as form-urlencoded, not JSON
+    const form = await req.formData();
 
-    // PhonePe sends transaction info in callback body
-    const transactionId = body?.transactionId || body?.data?.merchantTransactionId;
+    const transactionId =
+      form.get("transactionId")?.toString() ||
+      form.get("merchantTransactionId")?.toString();
+
     const merchantId = process.env.PHONEPE_MERCHANT_ID!;
 
     if (!transactionId) {
@@ -20,7 +22,7 @@ export async function POST(req: Request) {
 
     // ---- Verify payment status with PhonePe ----
     const endpoint = `/pg/v1/status/${merchantId}/${transactionId}`;
-    const xVerify = generateXVerify("", endpoint); // No base64 payload for status
+    const xVerify = generateXVerify("", endpoint);
 
     const response = await axios.get(
       `https://api.phonepe.com/apis/hermes${endpoint}`,
@@ -42,12 +44,11 @@ export async function POST(req: Request) {
         subject: "Payment Confirmation - Frigus Fiesta",
         html: `
           <h2>Payment Successful 🎉</h2>
-          <p>Hi ${transactionId},</p>
           <p>Your payment of <strong>₹${statusData.data.amount / 100}</strong> has been successfully received.</p>
           <p>Transaction ID: <strong>${transactionId}</strong></p>
           <p>Thank you for joining <strong>Frigus Fiesta</strong>. Stay tuned for exciting events!</p>
         `,
-        recipients: [body?.email || "info.frigusfiesta@gmail.com"],
+        recipients: ["info.frigusfiesta@gmail.com"], // replace with user email if you capture it
       };
 
       await axios.post(
