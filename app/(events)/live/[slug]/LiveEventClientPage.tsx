@@ -1,6 +1,8 @@
+// app/events/live/[slug]/LiveEventSlugPage.tsx
 "use client";
+
 import React, { useState, useEffect } from 'react';
-import { Calendar, MapPin, Users, Phone, Mail, Globe, ArrowLeft } from 'lucide-react';
+import { Calendar, MapPin, Users, Phone, Mail, Globe } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 import Header from '@/components/Header';
@@ -34,46 +36,14 @@ interface HostedBy {
   website: string;
 }
 
-export default function LiveEventSlugPage({ params }: { params: { slug: string } }) {
-  const [event, setEvent] = useState<EventData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+export default function LiveEventSlugPage({ event }: { event: EventData }) {
   const [isVisible, setIsVisible] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const router = useRouter();
 
   useEffect(() => {
     setIsVisible(true);
-    fetchEventData();
-  }, [params.slug]);
-
-  const fetchEventData = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch('https://backend-server.developer-frigus-fiesta.workers.dev/general/get-all-events');
-      if (!response.ok) {
-        throw new Error('Failed to fetch events');
-      }
-      const result:any = await response.json();
-      if (result.success) {
-        const foundEvent = result.data.find((e: EventData) => e.slug === params.slug);
-        if (foundEvent) {
-          if (foundEvent.category.toLowerCase() === 'live') {
-            setEvent(foundEvent);
-          } else {
-            setError('Event not found in this category');
-          }
-        } else {
-          setError('Event not found');
-        }
-      } else {
-        throw new Error(result.message || 'Failed to fetch events');
-      }
-    } catch (err: any) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  }, []);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -103,48 +73,6 @@ export default function LiveEventSlugPage({ params }: { params: { slug: string }
       return [];
     }
   };
-
-  if (loading) {
-    return (
-      <>
-        <Header />
-        <div className="flex min-h-screen items-center justify-center">
-          <div className="text-center">
-            <div className="mx-auto size-32 animate-spin rounded-full border-b-2 border-yellow-500"></div>
-            <p className="mt-4 text-xl text-gray-600">Loading event details...</p>
-          </div>
-        </div>
-        <Footer />
-      </>
-    );
-  }
-
-  if (error || !event) {
-    return (
-      <>
-        <Header />
-        <div className="flex min-h-screen items-center justify-center">
-          <div className="text-center">
-            <div className="mb-4 text-6xl text-red-500">⚠️</div>
-            <h2 className="mb-2 text-2xl font-bold text-gray-800">Event Not Found</h2>
-            <p className="mb-4 text-gray-600">
-              {error === 'Event not found in this category' 
-                ? 'This event exists but is not a live event. Please check the correct category.' 
-                : error || 'The event you are looking for does not exist.'}
-            </p>
-            <button 
-              onClick={() => router.back()}
-              className="mx-auto flex items-center gap-2 rounded-lg bg-yellow-500 px-6 py-3 text-white transition-colors hover:bg-yellow-600"
-            >
-              <ArrowLeft className="size-4" />
-              Go Back
-            </button>
-          </div>
-        </div>
-        <Footer />
-      </>
-    );
-  }
 
   const hostedBy = parseHostedBy(event.hostedBy);
   const ticketPricing = parseTicketPricing(event.ticketPricingList);

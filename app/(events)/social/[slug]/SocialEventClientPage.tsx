@@ -1,3 +1,4 @@
+// components/events/SocialEventClientPage.tsx
 "use client";
 import React, { useState, useEffect } from 'react';
 import { Calendar, MapPin, Users, Phone, Mail, Globe, ArrowLeft } from 'lucide-react';
@@ -34,7 +35,7 @@ interface HostedBy {
   website: string;
 }
 
-export default function LiveEventSlugPage({ params }: { params: { slug: string } }) {
+export default function SocialEventClientPage({ slug }: { slug: string }) {
   const [event, setEvent] = useState<EventData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -44,7 +45,7 @@ export default function LiveEventSlugPage({ params }: { params: { slug: string }
   useEffect(() => {
     setIsVisible(true);
     fetchEventData();
-  }, [params.slug]);
+  }, [slug]);
 
   const fetchEventData = async () => {
     try {
@@ -55,9 +56,9 @@ export default function LiveEventSlugPage({ params }: { params: { slug: string }
       }
       const result:any = await response.json();
       if (result.success) {
-        const foundEvent = result.data.find((e: EventData) => e.slug === params.slug);
+        const foundEvent = result.data.find((e: EventData) => e.slug === slug);
         if (foundEvent) {
-          if (foundEvent.category.toLowerCase() === 'live') {
+          if (foundEvent.category.toLowerCase() === 'social') {
             setEvent(foundEvent);
           } else {
             setError('Event not found in this category');
@@ -77,7 +78,7 @@ export default function LiveEventSlugPage({ params }: { params: { slug: string }
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-
+    
     return date.toLocaleDateString('en-US', {
       weekday: 'long',
       year: 'numeric',
@@ -103,7 +104,6 @@ export default function LiveEventSlugPage({ params }: { params: { slug: string }
       return [];
     }
   };
-
   if (loading) {
     return (
       <>
@@ -129,7 +129,7 @@ export default function LiveEventSlugPage({ params }: { params: { slug: string }
             <h2 className="mb-2 text-2xl font-bold text-gray-800">Event Not Found</h2>
             <p className="mb-4 text-gray-600">
               {error === 'Event not found in this category' 
-                ? 'This event exists but is not a live event. Please check the correct category.' 
+                ? 'This event exists but is not a social event. Please check the correct category.' 
                 : error || 'The event you are looking for does not exist.'}
             </p>
             <button 
@@ -156,7 +156,7 @@ export default function LiveEventSlugPage({ params }: { params: { slug: string }
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url(/assets/24.JPG)',
+            backgroundImage: 'url(/assets/25.JPG)',
           }}
         ></div>
         <div className="absolute inset-0 bg-black/50"></div>
@@ -182,7 +182,7 @@ export default function LiveEventSlugPage({ params }: { params: { slug: string }
           <div className="max-w-4xl">
             <div className="mb-4">
               <span className="inline-block rounded-full bg-white/20 px-4 py-2 text-sm font-semibold text-white backdrop-blur-sm">
-                Live Event
+                Social Event
               </span>
             </div>
             <h1 className="mb-6 text-4xl font-bold tracking-tight text-white md:text-6xl">
@@ -221,10 +221,9 @@ export default function LiveEventSlugPage({ params }: { params: { slug: string }
           </div>
         </div>
       </div>
-      <div className="py-20">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid gap-8 lg:grid-cols-3 lg:gap-12">
-            {/* Main Content */}
+      <div className="px-6 py-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-12 lg:grid-cols-3">
             <div className="lg:col-span-2">
               <div className="mb-8">
                 <h2 className="mb-4 text-3xl font-bold text-gray-900">About This Event</h2>
@@ -241,16 +240,16 @@ export default function LiveEventSlugPage({ params }: { params: { slug: string }
               {ticketPricing.length > 0 && (
                 <div className="mb-8">
                   <h3 className="mb-4 text-2xl font-bold text-gray-900">Ticket Pricing</h3>
-                  <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2">
+                  <div className="grid gap-4 md:grid-cols-2">
                     {ticketPricing.map((ticket: any, index: number) => (
-                      <div key={index} className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-yellow-300 hover:shadow-md">
-                        <div className="mb-4 flex items-center justify-between">
-                          <h4 className="text-lg font-semibold text-gray-900">{ticket.type}</h4>
+                      <div key={index} className="rounded-xl border border-gray-200 p-4 transition-colors hover:border-yellow-300">
+                        <div className="mb-2 flex items-center justify-between">
+                          <h4 className="font-semibold text-gray-900">{ticket.type}</h4>
                           <span className="text-2xl font-bold text-yellow-600">
                             ${ticket.price}
                           </span>
                         </div>
-                        <button className="w-full rounded-lg bg-gradient-to-r from-yellow-500 to-amber-500 px-6 py-3 font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                        <button className="w-full rounded-lg bg-gradient-to-r from-yellow-500 to-amber-500 px-4 py-2 font-semibold text-white transition-all duration-300 hover:shadow-lg">
                           Book Now
                         </button>
                       </div>
@@ -259,7 +258,7 @@ export default function LiveEventSlugPage({ params }: { params: { slug: string }
                 </div>
               )}
             </div>
-            <div className="space-y-6 lg:space-y-8">
+            <div className="space-y-6">
               <div className="rounded-2xl bg-white p-6 shadow-lg">
                 <h3 className="mb-4 text-xl font-bold text-gray-900">Event Status</h3>
                 <div className="flex items-center gap-3">
@@ -302,26 +301,26 @@ export default function LiveEventSlugPage({ params }: { params: { slug: string }
                       <Users className="size-5 text-yellow-500" />
                       <span className="font-semibold text-gray-700">{hostedBy.name}</span>
                     </div>
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="flex gap-2">
                       <button 
                         onClick={() => window.open(`tel:${hostedBy.phone}`, '_blank')}
-                        className="flex items-center justify-center gap-2 rounded-lg bg-gray-100 px-4 py-3 text-gray-700 transition-all duration-300 hover:scale-105 hover:bg-gray-200"
+                        className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-gray-100 px-3 py-2 text-gray-700 transition-colors hover:bg-gray-200"
                       >
                         <Phone className="size-4" />
-                        <span className="hidden sm:inline">Call</span>
+                        Call
                       </button>
                       <button 
                         onClick={() => window.open(`mailto:${hostedBy.email}`, '_blank')}
-                        className="flex items-center justify-center gap-2 rounded-lg bg-gray-100 px-4 py-3 text-gray-700 transition-all duration-300 hover:scale-105 hover:bg-gray-200"
+                        className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-gray-100 px-3 py-2 text-gray-700 transition-colors hover:bg-gray-200"
                       >
                         <Mail className="size-4" />
-                        <span className="hidden sm:inline">Email</span>
+                        Email
                       </button>
                     </div>
                     {hostedBy.website && (
                       <button 
                         onClick={() => window.open(hostedBy.website, '_blank')}
-                        className="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-yellow-500 to-amber-500 px-6 py-3 font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                        className="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-yellow-500 to-amber-500 px-4 py-2 font-semibold text-white transition-all duration-300 hover:shadow-lg"
                       >
                         <Globe className="size-4" />
                         Visit Website
