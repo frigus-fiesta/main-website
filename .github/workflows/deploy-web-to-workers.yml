@@ -14,6 +14,8 @@ jobs:
     env:
       NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
       NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+      RAZORPAY_LIVE_KEY_ID: ${{secrets.RAZORPAY_LIVE_KEY_ID}}
+      RAZORPAY_LIVE_KEY_SECRET: ${{secrets.RAZORPAY_LIVE_KEY_SECRET}}
 
     steps:
       - name: Checkout code
