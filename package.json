@@ -36,7 +36,7 @@
     "react-hot-toast": "^2.5.2",
     "react-icons": "^5.5.0",
     "showdown": "^2.1.0",
-    "esbuild": "0.14.47",
+    "esbuild": "^0.25.10",
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
