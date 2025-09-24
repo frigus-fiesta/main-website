@@ -74,13 +74,13 @@ const SignIn: React.FC<SignInProps> = ({ isOpen, onClose, redirectUrl }) => {
     try {
       // First get the IP address
       const ipResponse = await fetch('https://api.ipify.org?format=json');
-      const ipData = await ipResponse.json();
+      const ipData:any = await ipResponse.json();
       const ip = ipData.ip;
       const IP_INFO_TOKEN = process.env.NEXT_PUBLIC_IP_INFO_TOKEN || 'db04343f368c67'; // Replace with your actual token
       
       // Then get geolocation data
       const geoResponse = await fetch(`https://ipinfo.io/${ip}/json?token=${IP_INFO_TOKEN}`);
-      const geoData = await geoResponse.json();
+      const geoData:any = await geoResponse.json();
       
       return {
         ip,

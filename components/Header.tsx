@@ -100,7 +100,7 @@ const Header = () => {
     try {
       const res = await fetch(`${BACKEND_PROFILE_URL}${uuid}`);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const result = await res.json();
+      const result:any = await res.json();
       if (result.success && result.data) {
         setUser({
           id: result.data.uuid,

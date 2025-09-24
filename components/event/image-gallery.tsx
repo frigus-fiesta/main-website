@@ -43,7 +43,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ slug }) => {
       if (!response.ok) {
         throw new Error('Failed to fetch events');
       }
-      const result = await response.json();
+      const result:any = await response.json();
       if (result.success) {
         const foundEvent = result.data.find((e: EventData) => e.slug === slug);
         if (foundEvent) {

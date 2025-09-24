@@ -59,7 +59,7 @@ const Reviews: React.FC<ReviewsProps> = ({ slug }) => {
       try {
         const res = await fetch(`${REVIEWS_URL}${slug}`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
+        const data:any = await res.json();
         if (!data.success) throw new Error(data.message || 'Failed to fetch reviews');
         if (!isMounted) return;
         setReviews(data.data || []);
@@ -70,7 +70,7 @@ const Reviews: React.FC<ReviewsProps> = ({ slug }) => {
             try {
               const res = await fetch(`${PROFILE_URL}${uuid}`);
               if (!res.ok) throw new Error();
-              const profileData = await res.json();
+              const profileData:any = await res.json();
               if (profileData.success && profileData.data) {
                 return [uuid, {
                   uuid,
@@ -164,7 +164,7 @@ return;
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      const data = await res.json();
+      const data:any = await res.json();
       if (!res.ok || !data.success) throw new Error(data.message || 'Failed to submit review');
       setSubmitSuccess('Review submitted!');
       setComment('');
@@ -175,7 +175,7 @@ return;
       setLoading(true);
       // Refetch reviews
       const refetch = await fetch(`${REVIEWS_URL}${slug}`);
-      const refetchData = await refetch.json();
+      const refetchData:any = await refetch.json();
       setReviews(refetchData.data || []);
       // Refetch user profiles for new reviews
       const uuids = Array.from(new Set((refetchData.data || []).map((r: Review) => r.uuid)));
@@ -184,7 +184,7 @@ return;
           try {
             const res = await fetch(`${PROFILE_URL}${uuid}`);
             if (!res.ok) throw new Error();
-            const profileData = await res.json();
+            const profileData:any = await res.json();
             if (profileData.success && profileData.data) {
               return [uuid, {
                 uuid,

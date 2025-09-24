@@ -154,7 +154,7 @@ export default function PaymentPage() {
         body: JSON.stringify({ amount: amount * 100 }), // amount in paise
       });
 
-      const data = await res.json();
+      const data:any = await res.json();
       if (!data.id) throw new Error('Failed to create Razorpay order.');
 
       // const razorpayKey = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
@@ -181,7 +181,7 @@ export default function PaymentPage() {
                 razorpaySignature: response.razorpay_signature,
               }),
             });
-            const verifyData = await verifyRes.json();
+            const verifyData:any = await verifyRes.json();
             if (verifyData.isOk) {
               alert('Payment successful! Thank you. You will receive a confirmation email shortly.');
               setFormData({ name: '', email: '', phone: '' });
@@ -280,7 +280,7 @@ export default function PaymentPage() {
           callbackUrl,
         }),
       });
-      const data = await response.json();
+      const data:any = await response.json();
       if (data.url) {
         window.location.href = data.url;
       } else {
