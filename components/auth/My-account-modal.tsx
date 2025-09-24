@@ -105,7 +105,7 @@ return;
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
-      const data = await response.json();
+      const data:any = await response.json();
       if (data.success && data.data) {
         setUserProfile(data.data);
         setFormData(data.data);
@@ -160,7 +160,7 @@ return;
           body: JSON.stringify(updateData),
         }
       );
-      const data = await response.json();
+      const data:any = await response.json();
       if (response.ok && data.success) {
         setSuccess('Profile updated successfully!');
         setIsEditing(false);

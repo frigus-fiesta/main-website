@@ -108,7 +108,7 @@ const ScheduledEventsPage = () => {
       if (!response.ok) {
         throw new Error('Failed to fetch events');
       }
-      const result = await response.json();
+      const result:any = await response.json();
       if (result.success) {
         const transformedEvents = result.data.map((event: ApiEventData) => transformEventData(event));
         setEvents(transformedEvents);

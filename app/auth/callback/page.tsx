@@ -44,7 +44,7 @@ return;
           body: JSON.stringify({ uuid, email, full_name, avatar_url }),
         });
 
-        const result = await response.json();
+        const result:any = await response.json();
 
         if (!response.ok || !result.success) {
           setStatus('error');
