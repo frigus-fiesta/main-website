@@ -389,28 +389,28 @@ const DashboardPage = () => {
     try {
       // Load profiles
       const profilesResponse = await fetch('https://backend-server.developer-frigus-fiesta.workers.dev/general/get-all-profiles');
-      const profilesData = await profilesResponse.json();
+      const profilesData:any = await profilesResponse.json();
       if (profilesData.success) {
         setProfiles(profilesData.data);
       }
 
       // Load reviews
       const reviewsResponse = await fetch('https://backend-server.developer-frigus-fiesta.workers.dev/general/get-all-reviews');
-      const reviewsData = await reviewsResponse.json();
+      const reviewsData:any = await reviewsResponse.json();
       if (reviewsData.success) {
         setReviews(reviewsData.data);
       }
 
       // Load appointments
       const appointmentsResponse = await fetch('https://backend-server.developer-frigus-fiesta.workers.dev/general/get-all-appointments');
-      const appointmentsData = await appointmentsResponse.json();
+      const appointmentsData:any = await appointmentsResponse.json();
       if (appointmentsData.success) {
         setAppointments(appointmentsData.data);
       }
 
       // Load events
       const allEventsResponse = await fetch('https://backend-server.developer-frigus-fiesta.workers.dev/general/get-all-events');
-      const eventsData = await allEventsResponse.json();
+      const eventsData:any = await allEventsResponse.json();
       if (eventsData.success) {
         setEvents(eventsData.data);
       }
@@ -453,7 +453,7 @@ const DashboardPage = () => {
         });
       }
 
-      const result = await response.json();
+      const result:any = await response.json();
       
       if (result.success) {
         // Reload events data to get the updated list
@@ -483,7 +483,7 @@ const DashboardPage = () => {
           },
         });
 
-        const result = await response.json();
+        const result:any = await response.json();
         
         if (result.success) {
           // Reload events data to get the updated list
