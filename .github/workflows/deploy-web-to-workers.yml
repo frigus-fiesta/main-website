@@ -3,9 +3,11 @@ name: Automated Web App Deployment to Cloudflare Workers
 on:
   push:
     branches:
+      - main
       - workers-deployable/main
   pull_request:
     branches:
+      - main
       - workers-deployable/main
 
 jobs:
