@@ -7,7 +7,7 @@ export const runtime = "nodejs";
 
 export async function POST(req: Request) {
   try {
-    const { amount, userId, callbackUrl } = await req.json();
+    const { amount, userId, callbackUrl }:any = await req.json();
 
     const merchantId = process.env.PHONEPE_MERCHANT_ID!;
     const endpoint = "/pg/v1/pay";
