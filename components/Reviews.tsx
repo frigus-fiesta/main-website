@@ -30,9 +30,9 @@ interface UserProfile {
   avatar_url: string;
 }
 
-const REVIEWS_URL = 'https://backend-server.developer-frigus-fiesta.workers.dev/general/get-event-reviews/';
-const PROFILE_URL = 'https://backend-server.developer-frigus-fiesta.workers.dev/general/get-user-profile-from-uuid/';
-const SUBMIT_REVIEW_URL = 'https://backend-server.developer-frigus-fiesta.workers.dev/general/submit-event-review';
+const REVIEWS_URL = 'https://backend-server.frigus-fiesta.workers.dev/general/get-event-reviews/';
+const PROFILE_URL = 'https://backend-server.frigus-fiesta.workers.dev/general/get-user-profile-from-uuid/';
+const SUBMIT_REVIEW_URL = 'https://backend-server.frigus-fiesta.workers.dev/general/submit-event-review';
 
 const Reviews: React.FC<ReviewsProps> = ({ slug }) => {
   const [reviews, setReviews] = useState<Review[]>([]);
