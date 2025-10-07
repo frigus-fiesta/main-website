@@ -388,28 +388,28 @@ const DashboardPage = () => {
     setLoading(true);
     try {
       // Load profiles
-      const profilesResponse = await fetch('https://backend-server.developer-frigus-fiesta.workers.dev/general/get-all-profiles');
+      const profilesResponse = await fetch('https://backend-server.frigus-fiesta.workers.dev/general/get-all-profiles');
       const profilesData:any = await profilesResponse.json();
       if (profilesData.success) {
         setProfiles(profilesData.data);
       }
 
       // Load reviews
-      const reviewsResponse = await fetch('https://backend-server.developer-frigus-fiesta.workers.dev/general/get-all-reviews');
+      const reviewsResponse = await fetch('https://backend-server.frigus-fiesta.workers.dev/general/get-all-reviews');
       const reviewsData:any = await reviewsResponse.json();
       if (reviewsData.success) {
         setReviews(reviewsData.data);
       }
 
       // Load appointments
-      const appointmentsResponse = await fetch('https://backend-server.developer-frigus-fiesta.workers.dev/general/get-all-appointments');
+      const appointmentsResponse = await fetch('https://backend-server.frigus-fiesta.workers.dev/general/get-all-appointments');
       const appointmentsData:any = await appointmentsResponse.json();
       if (appointmentsData.success) {
         setAppointments(appointmentsData.data);
       }
 
       // Load events
-      const allEventsResponse = await fetch('https://backend-server.developer-frigus-fiesta.workers.dev/general/get-all-events');
+      const allEventsResponse = await fetch('https://backend-server.frigus-fiesta.workers.dev/general/get-all-events');
       const eventsData:any = await allEventsResponse.json();
       if (eventsData.success) {
         setEvents(eventsData.data);
@@ -435,7 +435,7 @@ const DashboardPage = () => {
       
       if (selectedEvent) {
         // Update existing event
-        response = await fetch(`https://backend-server.developer-frigus-fiesta.workers.dev/admin/events/update/${selectedEvent.id}`, {
+        response = await fetch(`https://backend-server.frigus-fiesta.workers.dev/admin/events/update/${selectedEvent.id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -444,7 +444,7 @@ const DashboardPage = () => {
         });
       } else {
         // Create new event
-        response = await fetch('https://backend-server.developer-frigus-fiesta.workers.dev/admin/create-event', {
+        response = await fetch('https://backend-server.frigus-fiesta.workers.dev/admin/create-event', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -476,7 +476,7 @@ const DashboardPage = () => {
     if (window.confirm('Are you sure you want to delete this event?')) {
       setLoading(true);
       try {
-        const response = await fetch(`https://backend-server.developer-frigus-fiesta.workers.dev/admin/events/delete/${eventId}`, {
+        const response = await fetch(`https://backend-server.frigus-fiesta.workers.dev/admin/events/delete/${eventId}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
