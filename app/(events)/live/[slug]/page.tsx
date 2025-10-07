@@ -29,7 +29,7 @@ export default async function Page({
 
   try {
     const res = await fetch(
-      'https://backend-server.developer-frigus-fiesta.workers.dev/general/get-all-events',
+      'https://backend-server.frigus-fiesta.workers.dev/general/get-all-events',
       { cache: 'no-store' }
     );
 

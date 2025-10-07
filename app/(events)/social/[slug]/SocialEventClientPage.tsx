@@ -50,7 +50,7 @@ export default function SocialEventClientPage({ slug }: { slug: string }) {
   const fetchEventData = async () => {
     try {
       setLoading(true);
-      const response = await fetch('https://backend-server.developer-frigus-fiesta.workers.dev/general/get-all-events');
+      const response = await fetch('https://backend-server.frigus-fiesta.workers.dev/general/get-all-events');
       if (!response.ok) {
         throw new Error('Failed to fetch events');
       }

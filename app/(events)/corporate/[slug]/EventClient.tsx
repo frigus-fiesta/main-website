@@ -54,7 +54,7 @@ export default function EventClient({ slug }: { slug: string }) {
     try {
       setLoading(true);
       const response = await fetch(
-        'https://backend-server.developer-frigus-fiesta.workers.dev/general/get-all-events'
+        'https://backend-server.frigus-fiesta.workers.dev/general/get-all-events'
       );
       if (!response.ok) throw new Error('Failed to fetch events');
 
