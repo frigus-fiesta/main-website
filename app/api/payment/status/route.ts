@@ -65,7 +65,7 @@ export async function POST(req: Request) {
       };
 
       await axios.post(
-        "https://backend-server.developer-frigus-fiesta.workers.dev/mail/send-on-server-2",
+        "https://backend-server.frigus-fiesta.workers.dev/mail/send-on-server-2",
         mailPayload,
         { headers: { "Content-Type": "application/json" } }
       );

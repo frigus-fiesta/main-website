@@ -64,7 +64,7 @@ const Header = () => {
   const [isMyAccountOpen, setIsMyAccountOpen] = useState(false);
   const pathname = usePathname();
   const isHomepage = pathname === '/';
-  const BACKEND_PROFILE_URL = 'https://backend-server.developer-frigus-fiesta.workers.dev/general/get-user-profile-from-uuid/';
+  const BACKEND_PROFILE_URL = 'https://backend-server.frigus-fiesta.workers.dev/general/get-user-profile-from-uuid/';
 
   // Check if user is already logged in
   const checkUserSession = async () => {

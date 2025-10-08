@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 import { supabase } from '@/utils/supabase';
 
-const BACKEND_PROFILE_URL = 'https://backend-server.developer-frigus-fiesta.workers.dev/general/create-profile';
+const BACKEND_PROFILE_URL = 'https://backend-server.frigus-fiesta.workers.dev/general/create-profile';
 
 export default function AuthCallback() {
   const router = useRouter();

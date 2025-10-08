@@ -52,7 +52,7 @@ const MyAccountModal: React.FC<MyAccountModalProps> = ({ isOpen, onClose, userUu
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [avatarUrlEdited, setAvatarUrlEdited] = useState(false);
 
-  const baseUrl = 'https://backend-server.developer-frigus-fiesta.workers.dev';
+  const baseUrl = 'https://backend-server.frigus-fiesta.workers.dev';
 
   // Validation functions
   const validateForm = (): boolean => {

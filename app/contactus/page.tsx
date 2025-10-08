@@ -69,7 +69,7 @@ export default function ContactUsPage() {
     setSubmitError(null);
     setSubmitSuccess(null);
     try {
-      const response = await fetch('https://backend-server.developer-frigus-fiesta.workers.dev/general/contactus', {
+      const response = await fetch('https://backend-server.frigus-fiesta.workers.dev/general/contactus', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

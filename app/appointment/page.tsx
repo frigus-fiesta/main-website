@@ -79,7 +79,7 @@ export default function BookAppointmentPage() {
         description: formData.message
       };
 
-      const response = await fetch('https://backend-server.developer-frigus-fiesta.workers.dev/general/book-appointment', {
+      const response = await fetch('https://backend-server.frigus-fiesta.workers.dev/general/book-appointment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
