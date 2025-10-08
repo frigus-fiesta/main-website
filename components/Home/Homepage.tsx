@@ -51,6 +51,7 @@ const Homepage = () => {
           loop
           muted
           playsInline
+          poster='/Hero-video-poster.jpg'
           className="size-full scale-110 object-cover"
         >
           <source src="/assets/homepagevideo.mp4" type="video/mp4" />
