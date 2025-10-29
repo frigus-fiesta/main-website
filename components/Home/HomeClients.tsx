@@ -14,6 +14,18 @@ const clients = [
   { image: '/assets/clients/c8.png' },
   { image: '/assets/clients/c9.webp' },
   { image: '/assets/clients/c10.png' },
+  { image: '/assets/clients/c11.webp' },
+  { image: '/assets/clients/c12.png' },
+  { image: '/assets/clients/c13.png' },
+  { image: '/assets/clients/c14.webp' },
+  { image: '/assets/clients/c15.png' },
+  { image: '/assets/clients/c16.png' },
+  { image: '/assets/clients/c18.png' },
+  { image: '/assets/clients/c19.png' },
+  { image: '/assets/clients/c20.webp' },
+  { image: '/assets/clients/c21.png' },
+  { image: '/assets/clients/c22.png' },
+  { image: '/assets/clients/c24.png' },
 ];
 
 const floatingCircles = [

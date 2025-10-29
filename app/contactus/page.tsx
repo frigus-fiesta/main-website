@@ -120,10 +120,10 @@ export default function ContactUsPage() {
       icon: MapPin,
       title: 'Visit Us',
       details: 'Hyderabad, Telangana',
-      subtext: '37-74/15/3A C 158, JJ NAGAR NEREDMET SAINIKPURI DEFENCE COLONY',
+      subtext: 'B-75, Hill Top Colony, Sainikpuri, Secunderabad, Telangana 500094',
       color: 'from-blue-400 to-indigo-600',
       type: 'location',
-      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7609.93065747853!2d78.55794824031105!3d17.50916843359547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9b5918496265%3A0x4d19b982b705c4df!2sJawahar%20Nagar%2C%20Sainikpuri%2C%20Secunderabad%2C%20Telangana%20500094!5e0!3m2!1sen!2sin!4v1750941309487!5m2!1sen!2sin',
+      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.450431068669!2d78.5391801!3d17.485998800000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9395ed09b339%3A0x99b8ca33a55a8375!2sFRIGUS%20FIESTA!5e0!3m2!1sen!2sin!4v1761741924373!5m2!1sen!2sin',
     },
     {
       icon: Clock,

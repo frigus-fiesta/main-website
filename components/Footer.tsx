@@ -45,9 +45,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="cursor-pointer text-sm text-gray-600 hover:text-black hover:underline"
               >
-                37-74/15/3A C 158, JJ NAGAR NEREDMET SAINIKPURI DEFENCE COLONY 
-                <br />
-                MALKAJGIRI 500094
+                B-75, Hill Top Colony, Sainikpuri, Secunderabad, Telangana 500094
               </Link>
             </div>
             <div>

@@ -16,8 +16,8 @@ import WorldMap from "./ui/world-map";
 
 const Footer = () => {
   return (
-    <footer className="relative mt-10 overflow-hidden bg-gray-900">
-      <div className="absolute inset-0 hidden size-full opacity-20 md:block">
+    <footer className="relative mt-10 overflow-hidden bg-gray-200">
+      <div className="absolute inset-0 hidden size-full opacity-40 md:block">
         <WorldMap fullSize={true} />
       </div>
       <div className="container relative z-10 mx-auto px-6 py-8">
@@ -33,47 +33,45 @@ const Footer = () => {
           </Link>
           <div className="grid w-full max-w-4xl grid-cols-1 gap-6 text-center md:grid-cols-3">
             <div>
-              <div className="mb-3 inline-flex items-center justify-center rounded-full bg-white/10 p-3 ring-1 ring-white/20 backdrop-blur-sm">
-                <MapPin className="size-5 text-gray-300" />
+              <div className="mb-3 inline-flex items-center justify-center rounded-full bg-white/50 p-3 ring-1 ring-black/5 backdrop-blur-sm">
+                <MapPin className="size-5 text-gray-700" />
               </div>
-              <p className="mb-1 text-base font-bold text-gray-100">
+              <p className="mb-1 text-base font-bold text-gray-800">
                 Our Location
               </p>
               <Link
                 href="https://maps.google.com/?q=Jawahar+Nagar,+Sainikpuri,+Hyderabad,+Telangana,+India-+500094"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="cursor-pointer text-sm text-gray-400 hover:text-white hover:underline"
+                className="cursor-pointer text-sm text-gray-600 hover:text-black hover:underline"
               >
-                37-74/15/3A C 158, JJ NAGAR NEREDMET SAINIKPURI DEFENCE COLONY 
-                <br />
-                MALKAJGIRI 500094
+                B-75, Hill Top Colony, Sainikpuri, Secunderabad, Telangana 500094
               </Link>
             </div>
             <div>
-              <div className="mb-3 inline-flex items-center justify-center rounded-full bg-white/10 p-3 ring-1 ring-white/20 backdrop-blur-sm">
-                <Phone className="size-5 text-gray-300" />
+              <div className="mb-3 inline-flex items-center justify-center rounded-full bg-white/50 p-3 ring-1 ring-black/5 backdrop-blur-sm">
+                <Phone className="size-5 text-gray-700" />
               </div>
-              <p className="mb-1 text-base font-bold text-gray-100">
+              <p className="mb-1 text-base font-bold text-gray-800">
                 Contact Phone
               </p>
               <Link
                 href="tel:+919182684160"
-                className="cursor-pointer text-sm text-gray-400 hover:text-white hover:underline"
+                className="cursor-pointer text-sm text-gray-600 hover:text-black hover:underline"
               >
                 91-91826-84160
               </Link>
             </div>
             <div>
-              <div className="mb-3 inline-flex items-center justify-center rounded-full bg-white/10 p-3 ring-1 ring-white/20 backdrop-blur-sm">
-                <Mail className="size-5 text-gray-300" />
+              <div className="mb-3 inline-flex items-center justify-center rounded-full bg-white/50 p-3 ring-1 ring-black/5 backdrop-blur-sm">
+                <Mail className="size-5 text-gray-700" />
               </div>
-              <p className="mb-1 text-base font-bold text-gray-100">
+              <p className="mb-1 text-base font-bold text-gray-800">
                 Email Address
               </p>
               <Link
                 href="mailto:info@frigusfiesta.com"
-                className="cursor-pointer text-sm text-gray-400 hover:text-white hover:underline"
+                className="cursor-pointer text-sm text-gray-600 hover:text-black hover:underline"
               >
                 info@frigusfiesta.com
               </Link>
@@ -82,7 +80,6 @@ const Footer = () => {
         </div>
         <div className="mb-6 flex justify-center space-x-4">
           {[
-            // { Icon: Facebook, href: "/", label: "Facebook" },
             {
               Icon: Instagram,
               href: "https://www.instagram.com/frigusfiesta?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
@@ -102,7 +99,7 @@ const Footer = () => {
             <Link
               key={index}
               href={href}
-              className="flex size-12 items-center justify-center rounded-full bg-white/10 text-gray-300 ring-1 ring-white/20 backdrop-blur-sm transition-all duration-300 hover:bg-yellow-400 hover:text-black"
+              className="flex size-12 items-center justify-center rounded-full bg-white/50 text-gray-700 ring-1 ring-black/5 backdrop-blur-sm transition-all duration-300 hover:bg-yellow-300 hover:text-black"
               aria-label={label}
               target="_blank"
               rel="noopener noreferrer"
@@ -111,14 +108,14 @@ const Footer = () => {
             </Link>
           ))}
         </div>
-        <div className="border-t border-gray-600 pt-4">
+        <div className="border-t border-gray-400 pt-4">
           <div className="flex flex-col items-center justify-between space-y-3 md:flex-row md:space-y-0">
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-gray-600">
               ©2025 Frigus Fiesta | Developed by{" "}
               <Link
                 href="https://www.electroplix.com/"
                 target="_blank"
-                className="font-semibold text-gray-200 hover:text-white hover:underline"
+                className="font-semibold text-gray-800 hover:text-black hover:underline"
               >
                 Electroplix
               </Link>
@@ -126,14 +123,14 @@ const Footer = () => {
             <div className="flex items-center space-x-4 text-xs">
               <Link
                 href="/terms"
-                className="text-gray-400 hover:text-white hover:underline"
+                className="text-gray-600 hover:text-black hover:underline"
               >
                 Terms & Conditions
               </Link>
-              <div className="h-3 w-px bg-white/20"></div>
+              <div className="h-3 w-px bg-black/20"></div>
               <Link
                 href="/privacy-policy"
-                className="text-gray-400 hover:text-white hover:underline"
+                className="text-gray-600 hover:text-black hover:underline"
               >
                 Privacy Policy
               </Link>
