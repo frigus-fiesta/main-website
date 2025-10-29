@@ -25,6 +25,7 @@ const clients = [
   { image: '/assets/clients/c20.webp' },
   { image: '/assets/clients/c21.png' },
   { image: '/assets/clients/c22.png' },
+  { image: '/assets/clients/c23.png' },
   { image: '/assets/clients/c24.png' },
 ];
 
