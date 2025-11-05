@@ -190,7 +190,15 @@ const Header = () => {
         <div className="container mx-auto px-4 sm:px-6 xl:px-8">
           <div className="flex h-16 items-center justify-between">
             <Link href="/" className="shrink-0">
-              <Image src="/assets/friguslogo.svg" alt='logo' width={100000} height={100000} className='mt-2 size-44 md:mt-1 lg:size-52' />
+              {/* <Image src="/assets/friguslogo.svg" alt='logo' width={100000} height={100000} className='mt-2 size-44 md:mt-1 lg:size-52' /> */}
+              <Image
+                src="/assets/friguslogo_New_Updated_on21-10-2025.svg"
+                alt="logo"
+                width={0}
+                height={0}
+                className="mt-2 h-auto max-h-12 w-44 md:mt-1 md:max-h-14 md:w-52 lg:max-h-16 lg:w-64"
+                priority
+              />
             </Link>
             <div className="hidden items-center space-x-6 xl:flex">
               <nav className="flex space-x-8">

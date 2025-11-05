@@ -20,6 +20,7 @@ const clients = [
   { image: '/assets/clients/c14.webp' },
   { image: '/assets/clients/c15.png' },
   { image: '/assets/clients/c16.png' },
+  { image: '/assets/clients/c17.png' },
   { image: '/assets/clients/c18.png' },
   { image: '/assets/clients/c19.png' },
   { image: '/assets/clients/c20.webp' },
@@ -27,7 +28,7 @@ const clients = [
   { image: '/assets/clients/c22.png' },
   { image: '/assets/clients/c23.png' },
   { image: '/assets/clients/c24.png' },
-  { image: '/assets/clients/c25.png' },
+  // { image: '/assets/clients/c25.png' },
 ];
 
 const floatingCircles = [
