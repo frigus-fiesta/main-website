@@ -118,7 +118,7 @@ export default function ContactUsPage() {
     },
     {
       icon: MapPin,
-      title: 'Visit Us',
+      title: 'Hyderabad Office',
       details: 'Hyderabad, Telangana',
       subtext: 'B-75, Hill Top Colony, Sainikpuri, Secunderabad, Telangana 500094',
       color: 'from-blue-400 to-indigo-600',
@@ -126,11 +126,21 @@ export default function ContactUsPage() {
       mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.450431068669!2d78.5391801!3d17.485998800000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9395ed09b339%3A0x99b8ca33a55a8375!2sFRIGUS%20FIESTA!5e0!3m2!1sen!2sin!4v1761741924373!5m2!1sen!2sin',
     },
     {
+      icon: MapPin,
+      title: 'Bangalore Office',
+      details: 'Bengaluru, Karnataka',
+      subtext: 'Manvi Complex, 1602, E End Main Rd, Jayanagara 9th Block, Jayanagar, Bengaluru 560041',
+      color: 'from-green-400 to-emerald-600',
+      type: 'location',
+      mapUrl: 'https://g.co/kgs/LFf8uR',
+      phoneNumber: '095904 56345',
+    },
+    {
       icon: Clock,
       title: 'Business Hours',
       details: 'Mon - Fri: 9AM - 6PM',
       subtext: 'Weekend: 10AM - 4PM',
-      color: 'from-green-400 to-teal-600',
+      color: 'from-orange-400 to-red-600',
       type: 'hours',
     }
   ];
@@ -194,7 +204,7 @@ export default function ContactUsPage() {
               We are very proud of our client base and the lasting relationships we have forged over many years
             </p>
           </div>
-          <div className="mb-20 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mb-20 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-5">
             {contactInfo.map((info, index) => (
               <div
                 key={index}
@@ -234,18 +244,29 @@ export default function ContactUsPage() {
                     </button>
                   )}
                   {info.type === 'location' && (
-                    <div className="absolute inset-0 z-20 flex items-center justify-center bg-white/90 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                      <iframe
-                        src={info.mapUrl}
-                        width="100%"
-                        height="100%"
-                        style={{ border: 0, minHeight: '200px', borderRadius: '1rem' }}
-                        allowFullScreen={true}
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        title={`${info.title} Location`}
-                      ></iframe>
-                    </div>
+                    <>
+                      <div className="absolute inset-0 z-20 flex items-center justify-center bg-white/90 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                        <iframe
+                          src={info.mapUrl}
+                          width="100%"
+                          height="100%"
+                          style={{ border: 0, minHeight: '200px', borderRadius: '1rem' }}
+                          allowFullScreen={true}
+                          loading="lazy"
+                          referrerPolicy="no-referrer-when-downgrade"
+                          title={`${info.title} Location`}
+                        ></iframe>
+                      </div>
+                      {(info as any).phoneNumber && (
+                        <button 
+                          className="absolute inset-x-0 bottom-0 z-30 flex translate-y-full items-center justify-center gap-2 rounded-b-2xl bg-gradient-to-r from-green-400 to-emerald-600 px-4 py-3 font-semibold text-white transition-transform duration-300 hover:shadow-lg group-hover:translate-y-0"
+                          onClick={() => window.open(`tel:${(info as any).phoneNumber}`, '_blank')}
+                        >
+                          <Phone className="size-4" />
+                          Call {(info as any).phoneNumber}
+                        </button>
+                      )}
+                    </>
                   )}
                 </div>
               </div>

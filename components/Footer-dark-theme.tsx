@@ -31,13 +31,13 @@ const Footer = () => {
               className="mb-10 mt-5 h-40 w-auto"
             />
           </Link>
-          <div className="grid w-full max-w-4xl grid-cols-1 gap-6 text-center md:grid-cols-3">
+          <div className="grid w-full max-w-6xl grid-cols-1 gap-6 text-center md:grid-cols-2 lg:grid-cols-4">
             <div>
               <div className="mb-3 inline-flex items-center justify-center rounded-full bg-white/50 p-3 ring-1 ring-black/5 backdrop-blur-sm">
                 <MapPin className="size-5 text-gray-700" />
               </div>
               <p className="mb-1 text-base font-bold text-gray-800">
-                Our Location
+                Hyderabad Office
               </p>
               <Link
                 href="https://maps.google.com/?q=Jawahar+Nagar,+Sainikpuri,+Hyderabad,+Telangana,+India-+500094"
@@ -48,6 +48,24 @@ const Footer = () => {
                 37-74/15/3A C 158, JJ Nagar Neredmet 
                 <br/>
                 Sainikpuri Defence Colony Malkajgiri 500094
+              </Link>
+            </div>
+            <div>
+              <div className="mb-3 inline-flex items-center justify-center rounded-full bg-white/50 p-3 ring-1 ring-black/5 backdrop-blur-sm">
+                <MapPin className="size-5 text-gray-700" />
+              </div>
+              <p className="mb-1 text-base font-bold text-gray-800">
+                Bangalore Office
+              </p>
+              <Link
+                href="https://g.co/kgs/LFf8uR"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cursor-pointer text-sm text-gray-600 hover:text-black hover:underline"
+              >
+                Manvi Complex, 1602, E End Main Rd
+                <br/>
+                Jayanagara 9th Block, Jayanagar, Bengaluru 560041
               </Link>
             </div>
             <div>
