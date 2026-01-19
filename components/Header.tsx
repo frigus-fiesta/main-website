@@ -196,7 +196,7 @@ const Header = () => {
                 alt="logo"
                 width={0}
                 height={0}
-                className="mt-2 h-auto max-h-12 w-44 md:mt-1 md:max-h-14 md:w-52 lg:max-h-16 lg:w-64"
+                className="mt-2 h-12 w-auto object-contain md:mt-1 md:h-14 lg:h-16"
                 priority
               />
             </Link>
