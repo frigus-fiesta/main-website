@@ -31,7 +31,7 @@ Frigus Fiesta is a full-featured event management platform designed to simplify 
   </div>
 </div>
 
-## Developed and Maintained by **Team Electroplix** under active agreement
+## Developed and Maintained by **Team Electroplix** under an agreement
 
 <br>
 
