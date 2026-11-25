@@ -1,7 +1,7 @@
 <div style="display: flex; justify-content: space-between; align-items: center;">
   <h2>Frigus Fiesta Main-Website</h2>
   <!-- <img alt="Status" src="https://img.shields.io/badge/status-production-brightgreen" /> -->
-  <img alt="Status" src="https://img.shields.io/badge/status-under--development-orange" />
+  <img alt="Status" src="https://img.shields.io/badge/status-deprecated-orange" />
   <!-- <img alt="Status" src="https://img.shields.io/badge/status-production--in--progress-yellow" /> -->
   <!-- <img alt="Status" src="https://img.shields.io/badge/status-beta-blue" /> -->
 </div>
